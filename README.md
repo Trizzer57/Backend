@@ -109,6 +109,74 @@ Students → Performance (Each student has performance records).
 Students → Alerts (Alerts are generated for specific students).
 Students → Interventions (Interventions are applied to students).
 Interventions → Feedback (Feedback is collected on interventions).
+
+# Frontend
+📌 Full Explanation of the Academic Performance Dashboard Frontend
+This fully implemented frontend provides a user-friendly interface for managing student performance, interventions, and alerts. It follows modern UI/UX principles and integrates smoothly with the backend API.  
+
+
+🖥️ 1. User Login System
+🔹 Users (Admin, Teacher, Parent) log in via a secure form.  
+🔹 Backend authentication (`/login` API) checks credentials and assigns a role (`admin`, `teacher`, or `parent`).  
+🔹 Session-based role handling ensures users see only what they’re allowed to access.  
+
+💻 Login Code Flow:
+1. The login form collects `username` and `password`.
+2. A `fetch` request sends data to `/login`.
+3. If successful, the dashboard is displayed; otherwise, an error message appears.
+
+
+📊 2. Dashboard Overview
+🔹 Displays student performance data in bar charts using Chart.js.  
+🔹 Alerts section lists students with low attendance or test scores.  
+🔹 Role-based visibility ensures only authorized users can modify data.  
+
+💻 Performance Visualization Code Flow:
+1. Calls `/generate_report` API to fetch student attendance & test scores.  
+2. Uses Chart.js to render bar charts dynamically.  
+3. Calls `/analyze_trends` API to display alerts for underperforming students.  
+
+
+⚠️ 3. Student Alerts System
+🔹 Detects at-risk students (low attendance or test scores).  
+🔹 Displays alerts in a Bootstrap-styled list for quick visibility.  
+🔹 Uses `/analyze_trends` API to check students needing intervention.  
+
+
+🧠 4. AI-Powered Intervention Prediction
+🔹 Predicts recommended interventions based on attendance, test scores, extracurricular activities, and behavior.  
+🔹 Calls `/predict_intervention` API using the form inputs.  
+🔹 Displays a suggested intervention (e.g., tutoring, mentorship) based on machine learning predictions.  
+
+💻 Intervention Form Code Flow:
+1. User enters student details (attendance, scores, etc.).  
+2. A fetch request sends data to `/predict_intervention`.  
+3. The response contains a recommended intervention, which is displayed dynamically.  
+
+
+📝 5. Feedback Submission System
+🔹 Teachers/Parents provide feedback on assigned interventions.  
+🔹 Calls `/add_feedback` API and displays confirmation messages.  
+
+💻 Feedback Form Code Flow:
+1. User enters intervention ID & feedback.  
+2. A fetch request submits feedback to `/add_feedback`.  
+3. A success message confirms submission.  
+
+🎯 6. Fully Responsive & User-Friendly Design
+✔ Bootstrap styling for a clean, modern UI.  
+✔ Mobile-friendly layout ensures usability on all devices.  
+✔ Instant feedback messages guide users smoothly.  
+✔ Charts & interactive elements improve visualization.  
+
+
+📌 Summary of Features
+✅ Secure login with role-based access
+✅ Performance tracking with interactive charts 
+✅ Real-time alerts for at-risk students
+✅ AI-powered intervention suggestions 
+✅ Feedback system for monitoring interventions 
+✅ Responsive design for desktops & mobile devices
 🚀 Benefits of This Database
 ✅ Scalability – Can handle multiple subjects and students.
 ✅ Data Integrity – Uses FOREIGN KEY constraints to maintain relationships.
